@@ -20,6 +20,7 @@ public class PrimaryWindow extends Application {
 
     private Pane root;
     private BreathGraph breathGraph;
+    private ControlToolBar controlToolBar;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -39,7 +40,7 @@ public class PrimaryWindow extends Application {
         root.getChildren().addAll(breathGraph.getLineChart());
 
         primaryStage.show();
-      
+        
     }
 
     @Override

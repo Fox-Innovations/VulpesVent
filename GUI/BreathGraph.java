@@ -1,5 +1,6 @@
 package GUI;
 
+
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.LineChart;
@@ -8,8 +9,11 @@ import javafx.scene.Scene;
 
 public class BreathGraph {
 
-
     private long startTime;
+
+    //Should it become known that the scene is unnessicary, remove this warning suppression
+    @SuppressWarnings("unused")
+    
     private Scene scene;
     private final NumberAxis xAxis;
     private final NumberAxis yAxis;
@@ -25,6 +29,7 @@ public class BreathGraph {
         breathGraph.setPrefSize(x, y);
         breathGraph.relocate(950, 20);
         
+        //#TODO it may be uneccisary to have thise scene, investigate at a future date
         scene = new Scene(breathGraph, x, y);
         series = new XYChart.Series<>();
 
@@ -52,10 +57,7 @@ public class BreathGraph {
 
     }
 
-    public Scene getScene(){
-        return scene;
-    }
-
+    //returns the line chart to be used on the primary window
     public LineChart<Number, Number> getLineChart(){
         return breathGraph;
     }
@@ -68,9 +70,9 @@ public class BreathGraph {
         Platform.runLater(() -> {
             series.getData().add(new XYChart.Data<>(deltaT, PSI));
         });
-        
     }
 
+    //on the start of a new breat cycle, excecute method
     public void newCycle(){
         series.getData().clear();
         startTime = System.currentTimeMillis();

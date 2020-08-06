@@ -32,6 +32,9 @@ public class BreathGraph {
         xAxis.setLabel("t(sec) since breath cycle started");
         //removes xaxis animations
         xAxis.setAnimated(false);
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(20);
         //Sets label for the y Axis
         yAxis.setLabel("PSI");
         //removes yaxis animations

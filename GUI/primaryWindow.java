@@ -39,7 +39,7 @@ public class PrimaryWindow extends Application {
         root.getChildren().addAll(breathGraph.getLineChart());
 
         primaryStage.show();
-        
+      
     }
 
     @Override

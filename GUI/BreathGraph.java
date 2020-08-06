@@ -1,34 +1,33 @@
 package GUI;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.LineChart;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 
-public class BreathGraph extends Application {
+public class BreathGraph {
 
 
     private long startTime;
-    private Stage stage;
     private Scene scene;
     private final NumberAxis xAxis;
     private final NumberAxis yAxis;
     private final LineChart<Number, Number> breathGraph;
     private XYChart.Series<Number, Number> series;
 
-    public BreathGraph(Stage toPlace, int x, int y) {
-        
+    public BreathGraph(int x, int y) {
         xAxis = new NumberAxis();
         yAxis = new NumberAxis();
         breathGraph = new LineChart<>(xAxis, yAxis);
-        scene = new Scene(breathGraph, 640, 540);
+        // breathGraph.setMinSize(x, y);
+        // breathGraph.setMaxSize(x, y);
+        breathGraph.setPrefSize(x, y);
+        breathGraph.relocate(950, 20);
+        
+        scene = new Scene(breathGraph, x, y);
         series = new XYChart.Series<>();
 
-        //sets stage to the parameter toPlace, which is the stage 
-        //that the BreathGraph is beign implemented in
-        stage = toPlace;
         //Sets label for the x Axis
         xAxis.setLabel("t(sec) since breath cycle started");
         //removes xaxis animations
@@ -43,22 +42,34 @@ public class BreathGraph extends Application {
         breathGraph.setAnimated(false);
         //sets name for the data series
         series.setName("Breath Data");
-    }
-
-    @Override
-    public void start(Stage stage) {
+        // adds all data to linechart from series
         breathGraph.getData().add(series);
+
         startTime = System.currentTimeMillis();
 
     }
 
-    public void addCurrentPSI(double PSI){
-        double x = (System.currentTimeMillis() - startTime)/1000;
-        series.getData().add(new XYChart.Data<>(x, PSI));
+    public Scene getScene(){
+        return scene;
+    }
 
+    public LineChart<Number, Number> getLineChart(){
+        return breathGraph;
+    }
+
+    public void addCurrentPSI(double PSI){
+        // determine the change in time since the breath cycle data was reset
+        double deltaT = (System.currentTimeMillis() - startTime)/1000;
+        /* the lambda function is utilised to insure the real time functionality of
+        the graph */
+        Platform.runLater(() -> {
+            series.getData().add(new XYChart.Data<>(deltaT, PSI));
+        });
+        
     }
 
     public void newCycle(){
         series.getData().clear();
+        startTime = System.currentTimeMillis();
     }
 }

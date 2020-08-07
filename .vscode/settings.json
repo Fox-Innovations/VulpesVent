@@ -1,7 +1,6 @@
 {
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar"
-        ]
-    }
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "maven.view": "hierarchical"
 }

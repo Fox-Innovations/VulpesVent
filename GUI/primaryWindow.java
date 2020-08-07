@@ -20,62 +20,61 @@ public class PrimaryWindow extends Application {
 
     private Pane root;
     private BreathGraph breathGraph;
-    private ControlToolBar controlToolBar;
+    private InformationToolBar informationToolBar;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        
+
         breathGraph = new BreathGraph(950, 520);
+        informationToolBar = new InformationToolBar();
 
         int backR = 40;
         int backG = 40;
         int backB = 40;
         Color backgroundColor = Color.rgb(backR, backG, backB);
-        
-        primaryStage.setTitle("Primary Window"); 
+
+        primaryStage.setTitle("Primary Window");
 
         root = new Pane();
         root.setStyle("-fx-background-color: backgroundColor");
         primaryStage.setScene(new Scene(root, 1920, 1080, backgroundColor));
-        root.getChildren().addAll(breathGraph.getLineChart());
+        root.getChildren().addAll(breathGraph.getBreathGraph());
+        root.getChildren().addAll(informationToolBar.getInformationToolBar());
 
         primaryStage.show();
-        
+
     }
 
     @Override
-    public void stop() throws Exception{
+    public void stop() throws Exception {
         super.stop();
     }
 
     /*
-    This method can be implemented and used to test the functionality of the breath graph
-    in the sense that it can take live data, however due to the necessary method of determining
-    the change in time it will appear as though ~5 data points are being output simultaniously 
-    */
+     * This method can be implemented and used to test the functionality of the
+     * breath graph in the sense that it can take live data, however due to the
+     * necessary method of determining the change in time it will appear as though
+     * ~5 data points are being output simultaniously
+     */
     /*
-    public void breathGraphDataRTTestMethod(){
-        Random r = new Random();
-        ScheduledExecutorService scheduledExecutorService;
-        scheduledExecutorService = Executors.newScheduledThreadPool(1);
-
-        scheduledExecutorService.scheduleAtFixedRate(() -> {
-        
-            int value = r.nextInt(10)+10;
-            breathGraph.addCurrentPSI(value);
-
-        }, 0, 100, TimeUnit.MILLISECONDS);
-
-        Button btn = new Button("cycle values");
-        btn.setOnAction(new EventHandler<ActionEvent>() {  
-            @Override  
-            public void handle(ActionEvent arg0) {  
-                breathGraph.newCycle(); 
-            }  
-        }); 
-
-        root.getChildren().add(btn);
-        
-    }
-    */
+     * public void breathGraphDataRTTestMethod(){ Random r = new Random();
+     * ScheduledExecutorService scheduledExecutorService; scheduledExecutorService =
+     * Executors.newScheduledThreadPool(1);
+     * 
+     * scheduledExecutorService.scheduleAtFixedRate(() -> {
+     * 
+     * int value = r.nextInt(10)+10; breathGraph.addCurrentPSI(value);
+     * 
+     * }, 0, 100, TimeUnit.MILLISECONDS);
+     * 
+     * Button btn = new Button("cycle values"); btn.setOnAction(new
+     * EventHandler<ActionEvent>() {
+     * 
+     * @Override public void handle(ActionEvent arg0) { breathGraph.newCycle(); }
+     * });
+     * 
+     * root.getChildren().add(btn);
+     * 
+     * }
+     */
 }

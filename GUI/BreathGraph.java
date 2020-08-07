@@ -58,7 +58,7 @@ public class BreathGraph {
     }
 
     //returns the line chart to be used on the primary window
-    public LineChart<Number, Number> getLineChart(){
+    public LineChart<Number, Number> getBreathGraph(){
         return breathGraph;
     }
 

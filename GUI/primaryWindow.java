@@ -20,13 +20,13 @@ public class PrimaryWindow extends Application {
 
     private Pane root;
     private BreathGraph breathGraph;
-    private InformationToolBar informationToolBar;
+    private InformationTabBar informationTabBar;
 
-    @Override
+    @Override 
     public void start(Stage primaryStage) throws Exception {
 
         breathGraph = new BreathGraph(950, 520);
-        informationToolBar = new InformationToolBar();
+        informationTabBar = new InformationTabBar(); 
 
         int backR = 40;
         int backG = 40;
@@ -39,7 +39,7 @@ public class PrimaryWindow extends Application {
         root.setStyle("-fx-background-color: backgroundColor");
         primaryStage.setScene(new Scene(root, 1920, 1080, backgroundColor));
         root.getChildren().addAll(breathGraph.getBreathGraph());
-        root.getChildren().addAll(informationToolBar.getInformationToolBar());
+        root.getChildren().addAll(informationTabBar.getInformationToolBar());
 
         primaryStage.show();
 

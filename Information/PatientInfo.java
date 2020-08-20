@@ -1,4 +1,4 @@
-package General;
+package Information;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,20 +6,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.System;
 import java.time.LocalDate;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 
-public class Patient {
+public class PatientInfo {
 
     private String firstName;
     private String lastName;
-    private int age;
+    private int age; 
     private LocalDate dob;
-    private Admission admission;
+    private AdmissionInfo admission;
 
-    public Patient(String patientFirstName, String patientLastName, int patientAge, LocalDate patientDateOfBirth, Admission patientAdmission) {
-
+    public PatientInfo(String patientFirstName, String patientLastName, int patientAge, LocalDate patientDateOfBirth, AdmissionInfo patientAdmission){
         firstName = patientFirstName;
         lastName = patientLastName;
         age = patientAge;
@@ -31,7 +32,7 @@ public class Patient {
         return File.separator + System.getProperty("user.dir") + File.separator + "JSON_files" + File.separator + "patient.json";
     }
 
-    public static void writeJSONFile(Patient patient) throws IOException{
+    public static void writeJSONFile(PatientInfo patient) throws IOException{
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create(); 
@@ -40,12 +41,12 @@ public class Patient {
         writer.close();
     }
 
-    public static Patient readJSONFile() throws FileNotFoundException{
+    public static PatientInfo readJSONFile() throws FileNotFoundException{
 
         GsonBuilder builder = new GsonBuilder(); 
         Gson gson = builder.create(); 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(getJSONPath()));   
-        Patient patient = gson.fromJson(bufferedReader, Patient.class); 
+        PatientInfo patient = gson.fromJson(bufferedReader, PatientInfo.class); 
         return patient; 
     }
 
@@ -70,7 +71,7 @@ public class Patient {
         return dob;
     }
 
-    public Admission getAdmission() {
+    public AdmissionInfo getAdmission() {
         return admission;
     }
 
@@ -90,7 +91,7 @@ public class Patient {
         this.dob = dob;
     }
 
-    public void setAdmission(Admission admission) {
+    public void setAdmission(AdmissionInfo admission) {
         this.admission = admission;
     }
 }

@@ -1,18 +1,18 @@
-package General;
+package Information;
 
 import java.time.LocalDate;
 
-public class Admission {
+public class AdmissionInfo {
 
     private LocalDate admissionDate;
     private String diagnosis;
     private String drFirstName;
     private String drLastName;
 
-    public Admission(LocalDate dateOfAdmission, String patientDiagnosis, String doctorFirstName, String doctorLastName) {
+    public AdmissionInfo(LocalDate dateOfAdmission, String patientDiagnosis, String doctorFirstName, String doctorLastName) {
 
         admissionDate = dateOfAdmission;
-        diagnosis = patientDiagnosis;
+        diagnosis = patientDiagnosis; 
         drFirstName = doctorFirstName;
         drLastName = doctorLastName;
     }

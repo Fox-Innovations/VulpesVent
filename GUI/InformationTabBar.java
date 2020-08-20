@@ -1,95 +1,97 @@
 package GUI;
 
+import java.io.FileNotFoundException;
+import Information.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 
 public class InformationTabBar {
 
-    private VBox controlToolBarBox;
+    private PatientInfo patient;
     private TabPane informationTabPane;
-    // private Button systemInformation;
-    // private Button operatingInformation;
-    // private Button patientInformation;
-    // private Button patientAdmissionInformation;
-    Tab systemInformationTab;
-    Tab operatingInformationTab;
-    Tab patientInformationTab;
-    Tab patientAdmissionInformationTab;
-    TextArea systemInformationText;
-    TextArea operatingInformationText;
-    TextArea patientInformationText;
-    TextArea patientAdmissionInformationText;
+    private Tab systemInformationTab;
+    private Tab operatingInformationTab;
+    private Tab patientInformationTab;
+    private Tab patientAdmissionInformationTab;
+    private TextArea systemInformationText;
+    private TextArea operatingInformationText;
+    private TextArea patientInformationText;
+    private TextArea patientAdmissionInformationText;
 
-    public InformationTabBar() {
-
-        //#TODO get this shitty fucking node to do what you want where you want it when you want it. More or less nothing is done
-        // controlToolBar = new ToolBar();
-        // controlToolBarBox = new VBox(controlToolBar);
-
-        // systemInformation = new Button("System Information");
-        // operatingInformation = new Button("Operating Information");
-        // patientInformation = new Button("Patient Information");
-        // patientAdmissionInformation = new Button("Patient Information");
-        // setButtonActions();
-
-        // controlToolBar.getItems().add(systemInformation);
-        // controlToolBar.getItems().add(operatingInformation);
-        // controlToolBar.getItems().add(patientInformation);
-        // controlToolBar.getItems().add(patientAdmissionInformation);
-
-        // controlToolBar.relocate(200, 200);
-
-        
-
-        // controlToolBarBox = new VBox(controlToolBar);
+    public InformationTabBar(int x, int y) {
 
         informationTabPane = new TabPane();
+
+        informationTabPane.relocate(10, 10);
+        informationTabPane.setPrefSize(x, y);
 
         systemInformationText = new TextArea("");
         operatingInformationText = new TextArea("");
         patientInformationText = new TextArea("");
         patientAdmissionInformationText = new TextArea("");
 
-        systemInformationTab = new Tab("System Information", systemInformationText);
-        operatingInformationTab = new Tab("Operating Information", operatingInformationText);
-        patientInformationTab = new Tab("Patient Information Tab", patientInformationText);
-        patientAdmissionInformationTab = new Tab("Patient Admission Information", patientAdmissionInformationText);
+        systemInformationTab = new Tab("System", systemInformationText);
+        operatingInformationTab = new Tab("Operating", operatingInformationText);
+        patientInformationTab = new Tab("Patient", patientInformationText);
+        patientAdmissionInformationTab = new Tab("Admission", patientAdmissionInformationText);
 
-        informationTabPane.getTabs().add(systemInformationTab);
-        informationTabPane.getTabs().add(operatingInformationTab);
+        SettingsTab settingsTab = new SettingsTab(this);
+
         informationTabPane.getTabs().add(patientInformationTab);
         informationTabPane.getTabs().add(patientAdmissionInformationTab);
+        informationTabPane.getTabs().add(systemInformationTab);
+        informationTabPane.getTabs().add(operatingInformationTab);
+        informationTabPane.getTabs().add(settingsTab.getSettingsTab());
 
+        try {
+
+            patient = PatientInfo.readJSONFile();
+            placePatientText(patient);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public VBox getInformationToolBar() {
-        return controlToolBarBox;
+    public void refresh(){
+        try {
+            placePatientText(patient);
+            //placeAdmissionText(patient);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public TabPane getInformationTabBar() {
         return informationTabPane;
     }
 
-    // private void setButtonActions() {
+    private void placePatientText (PatientInfo patient) throws FileNotFoundException {
 
-    //     //#TODO create information page class that displays the relevant information from the .JSON storage file
-    //     systemInformation.setOnAction(ActionEvent -> {
+        patient = PatientInfo.readJSONFile();
+        String toSet = "";
+        toSet+= "Patient First Name: \t\t" + patient.getPatientFirstName();
+        toSet+= "\nPatient Last Name: \t\t" + patient.getPatientLastName();
+        toSet+= "\nPatient Age: \t\t\t" + patient.getPatientAge();
+        toSet+= "\nPatient Date of Birth: \t" + patient.getPatientDateOfBirth();
 
-    //     });
+        patientInformationText.setText(toSet);
 
-    //     operatingInformation.setOnAction(ActionEvent -> {
+        placeAdmissionText(patient);
+        
+    }
 
-    //     });
+    private void placeAdmissionText (PatientInfo patient) {
 
-    //     patientInformation.setOnAction(ActionEvent -> {
+        AdmissionInfo admission = patient.getAdmission();
 
-    //     });
+        String toSet = "";
+        toSet+= "Date of Admission: \t\t" + admission.getAdmissionDate();
+        toSet+= "\nDoctors First Name: \t" + admission.getDrFirstName();
+        toSet+= "\nDoctors Last Name: \tDr." + admission.getDrLastName();
+        toSet+= "\nPatient Diagnosis: \t\t" + admission.getDiagnosis();
 
-    //     patientAdmissionInformation.setOnAction(ActionEvent -> {
-
-    //     });
-
-    // }
+        patientAdmissionInformationText.setText(toSet);
+    } 
 
 }

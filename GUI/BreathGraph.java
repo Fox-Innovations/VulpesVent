@@ -27,8 +27,7 @@ public class BreathGraph {
         // breathGraph.setMinSize(x, y);
         // breathGraph.setMaxSize(x, y);
         breathGraph.setPrefSize(x, y);
-        breathGraph.relocate(950, 20);
-        
+        breathGraph.relocate(405, 10);
         //#TODO it may be uneccisary to have thise scene, investigate at a future date
         scene = new Scene(breathGraph, x, y);
         series = new XYChart.Series<>();
@@ -62,13 +61,13 @@ public class BreathGraph {
         return breathGraph;
     }
 
-    public void addCurrentPSI(double PSI){
+    public void addCurrentPSI(double TidalVolume){
         // determine the change in time since the breath cycle data was reset
         double deltaT = (System.currentTimeMillis() - startTime)/1000;
         /* the lambda function is utilised to insure the real time functionality of
         the graph */
         Platform.runLater(() -> {
-            series.getData().add(new XYChart.Data<>(deltaT, PSI));
+            series.getData().add(new XYChart.Data<>(deltaT, TidalVolume));
         });
     }
 

@@ -8,6 +8,7 @@ public class InformationTabBar {
 
     private PatientInfo patient;
     private TabPane informationTabPane;
+
     private Tab systemInformationTab;
     private Tab operatingInformationTab;
     private Tab patientInformationTab;
@@ -53,10 +54,10 @@ public class InformationTabBar {
 
     }
 
-    public void refresh(){
+    public void refresh() {
         try {
             placePatientText(patient);
-            //placeAdmissionText(patient);
+            // placeAdmissionText(patient);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -66,32 +67,32 @@ public class InformationTabBar {
         return informationTabPane;
     }
 
-    private void placePatientText (PatientInfo patient) throws FileNotFoundException {
+    private void placePatientText(PatientInfo patient) throws FileNotFoundException {
 
         patient = PatientInfo.readJSONFile();
         String toSet = "";
-        toSet+= "Patient First Name: \t\t" + patient.getPatientFirstName();
-        toSet+= "\nPatient Last Name: \t\t" + patient.getPatientLastName();
-        toSet+= "\nPatient Age: \t\t\t" + patient.getPatientAge();
-        toSet+= "\nPatient Date of Birth: \t" + patient.getPatientDateOfBirth();
+        toSet += "Patient First Name: \t\t" + patient.getPatientFirstName();
+        toSet += "\nPatient Last Name: \t\t" + patient.getPatientLastName();
+        toSet += "\nPatient Age: \t\t\t" + patient.getPatientAge();
+        toSet += "\nPatient Date of Birth: \t" + patient.getPatientDateOfBirth();
 
         patientInformationText.setText(toSet);
 
         placeAdmissionText(patient);
-        
+
     }
 
-    private void placeAdmissionText (PatientInfo patient) {
+    private void placeAdmissionText(PatientInfo patient) {
 
         AdmissionInfo admission = patient.getAdmission();
 
         String toSet = "";
-        toSet+= "Date of Admission: \t\t" + admission.getAdmissionDate();
-        toSet+= "\nDoctors First Name: \t" + admission.getDrFirstName();
-        toSet+= "\nDoctors Last Name: \tDr." + admission.getDrLastName();
-        toSet+= "\nPatient Diagnosis: \t\t" + admission.getDiagnosis();
+        toSet += "Date of Admission: \t\t" + admission.getAdmissionDate();
+        toSet += "\nDoctors First Name: \t" + admission.getDrFirstName();
+        toSet += "\nDoctors Last Name: \tDr." + admission.getDrLastName();
+        toSet += "\nPatient Diagnosis: \t\t" + admission.getDiagnosis();
 
         patientAdmissionInformationText.setText(toSet);
-    } 
+    }
 
 }

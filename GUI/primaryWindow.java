@@ -22,7 +22,7 @@ public class PrimaryWindow extends Application {
     private BreathGraph breathGraph;
     private InformationTabBar informationTabBar;
 
-    @Override 
+    @Override
     public void start(Stage primaryStage) throws Exception {
 
         breathGraph = new BreathGraph(385, 230);

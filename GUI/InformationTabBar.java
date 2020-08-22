@@ -20,7 +20,11 @@ public class InformationTabBar {
 
     public InformationTabBar(int x, int y) {
 
+
+
         informationTabPane = new TabPane();
+
+        //#TODO give this a scene so that you dont have to have it for the settings tab; it will make it cleaner
 
         informationTabPane.relocate(10, 10);
         informationTabPane.setPrefSize(x, y);

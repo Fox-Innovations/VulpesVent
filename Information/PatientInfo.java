@@ -29,6 +29,7 @@ public class PatientInfo {
     }
 
     public static String getJSONPath(){
+        //#TODO add in project carna to this file name, this does not work on other computers
         return File.separator + System.getProperty("user.dir") + File.separator + "JSON_files" + File.separator + "patient.json";
     }
 

@@ -1,7 +1,5 @@
 package GUI;
 
-import javax.swing.plaf.ColorUIResource;
-
 import Information.LiveDataInfo;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +10,6 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;

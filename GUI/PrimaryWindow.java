@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -42,7 +41,7 @@ public class PrimaryWindow extends Application {
         primaryStage.setTitle("Primary Window");
 
         root = new Pane();
-        root.setStyle("-fx-background-color: backgroundColor");
+        //root.setStyle("-fx-background-color: backgroundColor");
         primaryStage.setScene(new Scene(root, 800, 480, backgroundColor));
         root.getChildren().addAll(breathGraph.getBreathGraph());
         root.getChildren().addAll(informationTabBar.getInformationTabBar());

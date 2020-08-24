@@ -14,24 +14,30 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+
+@SuppressWarnings("ClassCastException")
 public class PrimaryWindow extends Application {
 
     private Pane root;
     private BreathGraph breathGraph;
     private InformationTabBar informationTabBar;
+    private LiveDataDisplay liveDataDisplay;
 
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         breathGraph = new BreathGraph(385, 230);
         informationTabBar = new InformationTabBar(385, 460);
+        liveDataDisplay = new LiveDataDisplay(385, 220);
 
-        int backR = 40;
-        int backG = 40;
-        int backB = 40;
-        Color backgroundColor = Color.rgb(backR, backG, backB);
+        // int backR = 40;
+        // int backG = 40;
+        // int backB = 40;
+        Paint backgroundColor = Paint.valueOf("282828");
 
         primaryStage.setTitle("Primary Window");
 
@@ -40,6 +46,7 @@ public class PrimaryWindow extends Application {
         primaryStage.setScene(new Scene(root, 800, 480, backgroundColor));
         root.getChildren().addAll(breathGraph.getBreathGraph());
         root.getChildren().addAll(informationTabBar.getInformationTabBar());
+        root.getChildren().addAll(liveDataDisplay.getLiveDataDisplay());
 
         primaryStage.show();
 

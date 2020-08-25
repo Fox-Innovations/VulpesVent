@@ -7,3 +7,15 @@
 <classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/javafx-sdk-11.0.2/lib/javafx.swing.jar"/>
 <classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/javafx-sdk-11.0.2/lib/javafx.web.jar"/>
 <classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/gson-2.3.1.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-core.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-core-javadoc.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-core-sources.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-device.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-device-javadoc.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-device-sources.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-gpio-extension.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-gpio-extension-javadoc.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-gpio-extension-sources.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-service.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-service-javadoc.jar"/>
+<classpathentry kind="lib" path="/Users/swedi/OneDrive/Documents/Github/Project-Carna/lib/pi4j-1.1/lib/pi4j-service-sources.jar"/>

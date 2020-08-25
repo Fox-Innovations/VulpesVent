@@ -12,8 +12,8 @@ public class Main {
 
         LocalDate d1 = LocalDate.of(1998, 6, 3);
         LocalDate d2 = LocalDate.now();
-        AdmissionInfo admission = new AdmissionInfo(d2, "Too Much Coom", "Long", "Dick");
-        PatientInfo patient = new PatientInfo("Betheny", "Smith", 29, d1, admission);
+        AdmissionInfo admission = new AdmissionInfo(d2, "Covid19", "John", "Doe");
+        PatientInfo patient = new PatientInfo("Jane", "Doe", 29, d1, admission);
         try {
             PatientInfo.writeJSONFile(patient);
 

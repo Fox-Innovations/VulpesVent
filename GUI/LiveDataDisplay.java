@@ -1,9 +1,12 @@
 package GUI;
 
 import Information.LiveDataInfo;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -17,7 +20,6 @@ import javafx.scene.text.Text;
 public class LiveDataDisplay {
 
     private GridPane liveDataDisplay;
-    @SuppressWarnings("unused")
     private Scene scene;
     private Label tidalVolume;
     private Label psi;
@@ -26,22 +28,23 @@ public class LiveDataDisplay {
     private Text livePSI;
     private Text liveBPM;
 
-    public LiveDataDisplay(int x, int y) {
+    public LiveDataDisplay(int w, int h, int x, int y) {
         // #TODO implement into primary window
 
-        Paint sceneFill = Paint.valueOf("808B96");
+        Paint sceneFill = Paint.valueOf("3E3E3E");
 
         liveDataDisplay = new GridPane();
-        liveDataDisplay.setPrefSize(x, y);
-        liveDataDisplay.relocate(405, 250);
+        liveDataDisplay.setPrefSize(w, h);
+        liveDataDisplay.relocate(x, y);
         liveDataDisplay.setHgap(20);
         liveDataDisplay.setVgap(20);
         liveDataDisplay.setAlignment(Pos.CENTER);
         liveDataDisplay.setBorder(new Border(
                 new BorderStroke(sceneFill, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
+        liveDataDisplay.setBackground(new Background(new BackgroundFill(sceneFill, new CornerRadii(5), new Insets(0))));
 
-        //scene = new Scene(liveDataDisplay);
-        //scene.setFill(Paint.valueOf("808B96"));
+        scene = new Scene(liveDataDisplay);
+        scene.setFill(Paint.valueOf("808B96"));
 
         tidalVolume = new Label("Tidal Volume: ");
         tidalVolume.setFont(new Font(24));
@@ -56,13 +59,16 @@ public class LiveDataDisplay {
         bpm.setTextFill(Paint.valueOf("289ECD"));
 
         liveTidalVolume = new Text(setLiveTidalVolume());
-        liveTidalVolume.setFont(new Font(24));
+        liveTidalVolume.setFont(new Font(32));
+        liveTidalVolume.setFill(Paint.valueOf("FFFFFF"));
 
         livePSI = new Text(setLivePSI());
-        livePSI.setFont(new Font(24));
+        livePSI.setFont(new Font(32));
+        livePSI.setFill(Paint.valueOf("FFFFFF"));
 
         liveBPM = new Text(setLiveBPM());
-        liveBPM.setFont(new Font(24));
+        liveBPM.setFont(new Font(32));
+        liveBPM.setFill(Paint.valueOf("FFFFFF"));
 
         liveDataDisplay.add(tidalVolume, 0, 0);
         liveDataDisplay.add(psi, 0, 1);

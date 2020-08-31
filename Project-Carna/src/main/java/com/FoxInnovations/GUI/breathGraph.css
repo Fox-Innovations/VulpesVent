@@ -1,0 +1,21 @@
+.chart-series-line{
+    -fx-stroke-width: 2px;
+}
+
+.default-color0.chart-series-line{
+    -fx-stroke: #289ECD;
+}
+
+
+.default-color0.chart-line-symbol{
+    -fx-background-color: #289ECD, #ffffff;
+}
+
+.chart-title {
+    -fx-text-fill: #ffffff;
+}
+
+.axis-label {
+    -fx-text-fill: #ffffff;
+}
+

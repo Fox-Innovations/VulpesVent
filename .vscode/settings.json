@@ -1,12 +1,4 @@
 {
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar"
-        ],
-        "exclude": [
-            "lib/pi4j-1.1/lib/pi4j-example-javadoc.jar",
-            "lib/pi4j-1.1/lib/pi4j-example.jar"
-        ]
-    },
+    "java.configuration.updateBuildConfiguration": "automatic",
     "maven.view": "hierarchical"
 }

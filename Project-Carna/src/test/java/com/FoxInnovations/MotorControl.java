@@ -1,4 +1,4 @@
-package com.FoxInnovations.Control;
+package com.FoxInnovations;
 
 import java.util.Timer;
 import java.util.TimerTask;

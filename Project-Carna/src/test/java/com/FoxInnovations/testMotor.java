@@ -20,7 +20,7 @@ public class testMotor{
             basicFunctionalityTest();
         }
         
-
+        in.close();
     }
 
     public static void basicFunctionalityTest(){

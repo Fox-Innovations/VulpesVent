@@ -13,16 +13,13 @@ import javafx.geometry.Insets;
 public class BreathGraph {
 
     private long startTime;
-
-    // Should it become known that the scene is unnessicary, remove this warning
-    // suppression
-
     private final NumberAxis xAxis;
     private final NumberAxis yAxis;
     private final LineChart<Number, Number> breathGraph;
     private XYChart.Series<Number, Number> series;
 
     public BreathGraph(int w, int h, int x, int y) {
+
         xAxis = new NumberAxis();
         yAxis = new NumberAxis();
         breathGraph = new LineChart<>(xAxis, yAxis);
@@ -84,6 +81,7 @@ public class BreathGraph {
     }
 
     public void setBasicData() {
+
         series.getData().add(new XYChart.Data<>(0, 5));
         series.getData().add(new XYChart.Data<>(2, 6));
         series.getData().add(new XYChart.Data<>(4, 8));
@@ -97,8 +95,10 @@ public class BreathGraph {
         series.getData().add(new XYChart.Data<>(20, 5));
     }
 
-    // on the start of a new breat cycle, excecute method
+    // on the start of a new breath cycle, excecute method
     public void newCycle() {
+
+        
         series.getData().clear();
         startTime = System.currentTimeMillis();
     }

@@ -13,15 +13,11 @@ import com.pi4j.io.gpio.RaspiPin;
  * Controls all digital general-purpose-input-output (GPIO) signals that actuate
  * the stepper motor via the Sparkfun "Big Easy Driver" module
  * 
- * Implementation Guide:
- * construct MotorControl object
- * use setEnableOn() method to enable motor (can be changed)
- * use setStep() method to set step type (can be changed)
- * use either setDirHigh() or setDirLow() methods to set motor direction (can be changed)
- * {
- *  ...implementation...
- * }
- * use setEnableOff() to disable motor
+ * Implementation Guide: construct MotorControl object use setEnableOn() method
+ * to enable motor (can be changed) use setStep() method to set step type (can
+ * be changed) use either setDirHigh() or setDirLow() methods to set motor
+ * direction (can be changed) { ...implementation... } use setEnableOff() to
+ * disable motor
  */
 public class MotorControl {
 
@@ -34,6 +30,7 @@ public class MotorControl {
     // change to actual value
     private final int MAX_TICKS_PER_SEC = 1000;
     private final int TICKS_PER_ROTAION = 100;
+    private int tickCounter;
 
     public MotorControl(int stepPin, int dirPin, int MS1Pin, int MS2Pin, int MS3Pin, int ENPin) {
         // Create the controller instance
@@ -99,6 +96,7 @@ public class MotorControl {
     }
 
     public void takeStep() {
+        this.addTick();
         STEP.setState(PinState.LOW);
         STEP.setState(PinState.HIGH);
     }
@@ -146,6 +144,19 @@ public class MotorControl {
 
     public void setEnableOff() {
         EN.setState(PinState.LOW);
+    }
+
+    public int getTickCount() {
+        return tickCounter;
+    }
+
+    private void addTick() {
+
+        if (DIR.getState().equals(PinState.HIGH)) {
+            tickCounter++;
+        } else {
+            tickCounter--;
+        }
     }
 
 }

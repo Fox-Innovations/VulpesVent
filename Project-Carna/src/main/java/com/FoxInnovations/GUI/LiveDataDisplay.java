@@ -29,19 +29,24 @@ public class LiveDataDisplay {
     private Text liveBPM;
 
     public LiveDataDisplay(int w, int h, int x, int y) {
-        // #TODO implement into primary window
 
         Paint sceneFill = Paint.valueOf("3E3E3E");
 
+        // intitialise live data display grid pane
         liveDataDisplay = new GridPane();
+
+        //set grid pane layout
         liveDataDisplay.setPrefSize(w, h);
         liveDataDisplay.relocate(x, y);
         liveDataDisplay.setHgap(20);
         liveDataDisplay.setVgap(20);
+        
+        //set styling for live data display grid pane
         liveDataDisplay.setAlignment(Pos.CENTER);
         liveDataDisplay.setBorder(new Border(
                 new BorderStroke(sceneFill, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
         liveDataDisplay.setBackground(new Background(new BackgroundFill(sceneFill, new CornerRadii(5), new Insets(0))));
+
 
         scene = new Scene(liveDataDisplay);
         scene.setFill(Paint.valueOf("808B96"));
@@ -80,10 +85,12 @@ public class LiveDataDisplay {
     }
 
     public GridPane getLiveDataDisplay() {
+
         return liveDataDisplay;
     }
 
     private String setLiveTidalVolume() {
+
         String toSet;
 
         try {
@@ -108,6 +115,8 @@ public class LiveDataDisplay {
     }
 
     private String setLiveBPM() {
+
+
         String toSet = "";
 
         try {

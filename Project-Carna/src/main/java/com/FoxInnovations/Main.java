@@ -17,6 +17,8 @@ public class Main {
         // } catch (IOException e) {
         //     e.printStackTrace();
         // }
+
+        //Launch GUI application
         Application.launch(PrimaryWindow.class);
 
     } 

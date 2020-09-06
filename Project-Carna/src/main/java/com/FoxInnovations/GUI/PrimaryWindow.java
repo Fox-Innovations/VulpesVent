@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 @SuppressWarnings("ClassCastException")
 public class PrimaryWindow extends Application {
 
-    //private Pane root;
+    // root is parent to all javafx child nodes
     private GridPane root;
     private BreathGraph breathGraph;
     private InformationTabBar informationTabBar;
@@ -35,30 +35,44 @@ public class PrimaryWindow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        informationTabBar = new InformationTabBar(385, 460, 10, 10);
-        breathGraph = new BreathGraph(385, 270, 405, 10);
-        liveDataDisplay = new LiveDataDisplay(385, 180, 405, 270);
+        //Information Tab bar intitialisation
+        int infoTabBarW = 385;
+        int infoTabBarH = 460;
+        int infoTabBarX = 10;
+        int inforTabBarY = 10;
+        informationTabBar = new InformationTabBar(infoTabBarW, infoTabBarH, infoTabBarX, inforTabBarY);
 
-        // int backR = 40;
-        // int backG = 40;
-        // int backB = 40;
-        Paint backgroundColor = Paint.valueOf("5D5D5D");
+        //Breath Graph intitialisation
+        int breathGraphW = 385;
+        int breathGraphH = 270;
+        int breathGraphX = 405;
+        int breathGraphY = 10;
+        breathGraph = new BreathGraph(breathGraphW, breathGraphH, breathGraphX, breathGraphY);
+
+        //Live Data Display intitialisation
+        int liveDataDisplayW = 385;
+        int liveDataDisplayH = 180;
+        int liveDataDisplayX = 405;
+        int liveDataDisplayY = 270;
+        liveDataDisplay = new LiveDataDisplay(liveDataDisplayW, liveDataDisplayH, liveDataDisplayX, liveDataDisplayY);
+
+        String backgroundColorHex = "5D5D5D";
+        Paint backgroundColor = Paint.valueOf(backgroundColorHex);
 
         primaryStage.setTitle("Primary Window");
 
-        //root = new Pane();
+        // root setup
         root = new GridPane();
         root.setBackground(new Background(new BackgroundFill(backgroundColor, new CornerRadii(5), new Insets(0))));
         primaryStage.setScene(new Scene(root, 800, 480, backgroundColor));
+        //adding child nodes
         root.add(breathGraph.getBreathGraph(), 1, 0);
         root.add(informationTabBar.getInformationTabBar(), 0, 0, 1, 2);
         root.add(liveDataDisplay.getLiveDataDisplay(), 1, 1);
+        //setting layout specifications
         root.relocate(10, 10);
         root.setHgap(10);
         root.setVgap(10);
-        //root.getChildren().addAll(breathGraph.getBreathGraph());
-        // root.getChildren().addAll(informationTabBar.getInformationTabBar());
-        // root.getChildren().addAll(liveDataDisplay.getLiveDataDisplay());
 
         primaryStage.show();
 

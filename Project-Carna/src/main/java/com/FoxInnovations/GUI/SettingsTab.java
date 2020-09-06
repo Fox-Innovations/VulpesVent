@@ -43,8 +43,6 @@ public class SettingsTab {
 
         scene = new Scene(settings);
 
-        // #TODO make it so you can change just a few things at once instead of having
-        // to change all to avoid null pointers
         Text patientSettings = new Text("Patient Settings");
         settings.add(patientSettings, 0, 0, 2, 1);
         Label patientFirstName = new Label("Patient First Name");

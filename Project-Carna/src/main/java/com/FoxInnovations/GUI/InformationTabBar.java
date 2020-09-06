@@ -36,33 +36,37 @@ public class InformationTabBar {
 
         informationTabPane = new TabPane();
 
-        // #TODO Remake text infos as labels within a gridPane
-        // tab; it will make it cleaner
-
+        // informationTabPane styling
         informationTabPane.relocate(x, y);
         informationTabPane.setPrefSize(w, h);
         informationTabPane.setBackground(
                 new Background(new BackgroundFill(Paint.valueOf("3E3E3E"), new CornerRadii(0), new Insets(0))));
-        //informationTabPane.getStylesheets().add(getClass().getResource("infoTabBar.css").toExternalForm());
         informationTabPane.getStylesheets().add(getClass().getResource("infoTabBar.css").toExternalForm());
 
+        // initialisation of information display nodes
         systemInformationText = new TextArea("");
         operatingInformationText = new TextArea("");
         patientInformationGrid = new GridPane();
         patientAdmissionInformationText = new TextArea("");
 
+        // intitialisation of tabs
         systemInformationTab = new Tab("System", systemInformationText);
         operatingInformationTab = new Tab("Operating", operatingInformationText);
         patientInformationTab = new Tab("Patient", patientInformationGrid);
         patientAdmissionInformationTab = new Tab("Admission", patientAdmissionInformationText);
         SettingsTab settingsTab = new SettingsTab(this);
 
+        /*
+         * set tabs as not closable so that user does not accadentally close an
+         * information/ settings tab without a way to re-open it
+         */
         systemInformationTab.setClosable(false);
         operatingInformationTab.setClosable(false);
         patientInformationTab.setClosable(false);
         patientAdmissionInformationTab.setClosable(false);
         settingsTab.getSettingsTab().setClosable(false);
 
+        // adding child Tabs to parent TabPane
         informationTabPane.getTabs().add(patientInformationTab);
         informationTabPane.getTabs().add(patientAdmissionInformationTab);
         informationTabPane.getTabs().add(systemInformationTab);
@@ -70,10 +74,8 @@ public class InformationTabBar {
         informationTabPane.getTabs().add(settingsTab.getSettingsTab());
 
         try {
-
             patient = PatientInfo.readJSONFile();
             placePatientText(patient);
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -81,9 +83,10 @@ public class InformationTabBar {
     }
 
     public void refresh() {
+
+        // replaces all text with current values
         try {
             placePatientText(patient);
-            // placeAdmissionText(patient);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -95,8 +98,10 @@ public class InformationTabBar {
 
     private void placePatientText(PatientInfo patient) throws FileNotFoundException {
 
+        // intitialises a patient class from JSON file
         patient = PatientInfo.readJSONFile();
 
+        // intitialisation of patient information display nodes
         Label patientFName = new Label("Patient First Name ");
         Label patientLName = new Label("Patient Last Name: ");
         Label patientAge = new Label("Patient Age: ");
@@ -106,6 +111,7 @@ public class InformationTabBar {
         Text patientAgeText = new Text(patient.getPatientAge() + "");
         Text patientDOBText = new Text(patient.getPatientDateOfBirth() + "");
 
+        // add patient information display nodes to patient information GridPane
         patientInformationGrid.add(new Text(), 0, 0);
         patientInformationGrid.add(patientFName, 0, 1);
         patientInformationGrid.add(patientLName, 0, 2);
@@ -116,6 +122,7 @@ public class InformationTabBar {
         patientInformationGrid.add(patientAgeText, 1, 3);
         patientInformationGrid.add(patientDOBText, 1, 4);
 
+        // set styling for patient display information
         patientFName.setTextFill(Paint.valueOf("ffffff"));
         patientFName.setFont(new Font(24));
         patientLName.setTextFill(Paint.valueOf("ffffff"));
@@ -133,13 +140,14 @@ public class InformationTabBar {
         patientDOBText.setFill(Paint.valueOf("ffffff"));
         patientDOBText.setFont(new Font(24));
 
+        //set layout for patient information grid
         patientInformationGrid.setHgap(12);
         patientInformationGrid.setVgap(12);
-
         patientInformationGrid.setAlignment(Pos.TOP_CENTER);
 
-        patientInformationGrid.setBackground(
-                new Background(new BackgroundFill(Paint.valueOf("3E3E3E"), new CornerRadii(0.0, 0.0, 5.0, 5.0, false), new Insets(0))));
+        //set styling for patient information grid
+        patientInformationGrid.setBackground(new Background(new BackgroundFill(Paint.valueOf("3E3E3E"),
+                new CornerRadii(0.0, 0.0, 5.0, 5.0, false), new Insets(0))));
 
         placeAdmissionText(patient);
 
@@ -147,8 +155,10 @@ public class InformationTabBar {
 
     private void placeAdmissionText(PatientInfo patient) {
 
+        // intitialisation of admission based off pation JSON
         AdmissionInfo admission = patient.getAdmission();
 
+        // setting text for patient admission tab
         String toSet = "";
         toSet += "Date of Admission: \t\t" + admission.getAdmissionDate();
         toSet += "\nDoctors First Name: \t" + admission.getDrFirstName();

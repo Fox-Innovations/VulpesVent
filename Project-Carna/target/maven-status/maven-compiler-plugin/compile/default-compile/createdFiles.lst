@@ -1,0 +1,17 @@
+com\FoxInnovations\GUI\SettingsTab.class
+com\FoxInnovations\Main.class
+com\FoxInnovations\GUI\SettingsTab$1.class
+com\FoxInnovations\GUI\BreathGraph.class
+com\FoxInnovations\Information\AdmissionInfo.class
+com\FoxInnovations\Information\LiveDataInfo.class
+com\FoxInnovations\GUI\InformationTabBar.class
+com\FoxInnovations\GUI\PrimaryWindow.class
+com\FoxInnovations\GUI\LiveDataDisplay.class
+com\FoxInnovations\Information\PatientInfo.class
+com\FoxInnovations\Control\MotorControl.class
+com\FoxInnovations\Information\SystemInfo.class
+com\FoxInnovations\Control\MotorControl$1.class
+com\FoxInnovations\Communication\SSCDANN010NG2A3_I2C.class
+com\FoxInnovations\Information\OperationInfo.class
+com\FoxInnovations\Information\SSCDANN010NG2A3_info.class
+com\FoxInnovations\Control\MotorControl$2.class

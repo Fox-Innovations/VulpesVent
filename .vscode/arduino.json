@@ -1,0 +1,4 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "Project-Carna\\target\\test-classes\\com\\FoxInnovations\\arduino motor tests\\motorBasicControl.ino"
+}

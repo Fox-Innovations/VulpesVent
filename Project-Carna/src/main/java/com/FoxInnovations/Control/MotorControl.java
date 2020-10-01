@@ -48,6 +48,14 @@ public class MotorControl {
 
     public void run(double speed, double numRotations) {
 
+        if (speed > 1) {
+            try {
+                throw new InterruptedException("Speed Out of Bounds, must be lower than 1");
+            } catch (InterruptedException e) {
+                System.out.println("Speed out of Bounds, must be lower than 1");
+            }
+        }
+
         int totalTicks = (int) (numRotations * TICKS_PER_ROTAION);
         // speed is a percentage of the maximum speed
         int ticksPerSec = (int) (MAX_TICKS_PER_SEC * speed);
@@ -71,6 +79,14 @@ public class MotorControl {
     }
 
     public void run(double speed, long timeInMillis, boolean diferentiator) {
+
+        if (speed > 1) {
+            try {
+                throw new InterruptedException("Speed Out of Bounds, must be lower than 1");
+            } catch (InterruptedException e) {
+                System.out.println("Speed out of Bounds, must be lower than 1");
+            }
+        }
 
         int ticksPerSec = (int) (MAX_TICKS_PER_SEC * speed);
         // this is how frequently a tick action is meant to be performed, the interval

@@ -105,7 +105,7 @@ public class MotorControl {
 
     public void setStep(PinState ms1State, PinState ms2State, PinState ms3State) {
 
-        // L L L == Full Step
+        // L L L == Full Step 
         // H L L == Half Step
         // L H L == Quarter Step
         // H H L == Eight Step

@@ -18,7 +18,7 @@ public class Main {
         //     e.printStackTrace();
         // }
         Application.launch(PrimaryWindow.class);
-
+        
     } 
 
 }

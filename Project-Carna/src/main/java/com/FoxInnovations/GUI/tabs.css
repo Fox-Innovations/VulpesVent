@@ -13,8 +13,11 @@
 
 .tab-label {
     -fx-text-fill: #ffffff;
-    
+    -fx-font-size: 10pt;
 }
+
+
+
 
 
 

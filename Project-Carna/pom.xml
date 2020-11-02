@@ -73,7 +73,7 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <classpathPrefix>dependency-jars/</classpathPrefix>
+                <classpathPrefix>jar-with-dependencies</classpathPrefix>
                 <mainClass>com.FoxInnovations.Main</mainClass>
               </manifest>
             </archive>
@@ -98,11 +98,16 @@
         </plugin>
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
-            <version>3.0.0</version>
+            <version>3.3.0</version>
             <configuration>
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>com.FoxInnovations.Main</mainClass>
+                </manifest>
+              </archive>
             </configuration>
             <executions>
               <execution>

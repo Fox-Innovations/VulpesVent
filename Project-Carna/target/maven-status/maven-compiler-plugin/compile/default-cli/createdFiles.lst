@@ -1,5 +1,6 @@
 com\FoxInnovations\GUI\SettingsTab.class
 com\FoxInnovations\Main.class
+com\FoxInnovations\MotorFunctionTest.class
 com\FoxInnovations\GUI\SettingsTab$1.class
 com\FoxInnovations\GUI\BreathGraph.class
 com\FoxInnovations\Information\AdmissionInfo.class

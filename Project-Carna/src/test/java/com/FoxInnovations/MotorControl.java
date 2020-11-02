@@ -90,7 +90,7 @@ public class MotorControl {
             public void run() {
                 takeStep();
                 if (counter >= targetTime || counter + schedulerInterval >= targetTime) {
-                    timer.cancel();
+                    timer.cancel(); 
                 }
             }
         };

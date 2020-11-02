@@ -46,6 +46,7 @@ public class SettingsTab {
         // #TODO make it so you can change just a few things at once instead of having
         // to change all to avoid null pointers
         Text patientSettings = new Text("Patient Settings");
+        patientSettings.setStyle("-fx-font-size: 13pt;");
         settings.add(patientSettings, 0, 0, 2, 1);
         Label patientFirstName = new Label("Patient First Name");
         Label patientLastName = new Label("Patient Last Name");
@@ -65,6 +66,7 @@ public class SettingsTab {
         settings.add(newPatientDateOfBirth, 1, 4);
 
         Text admissionsettings = new Text("Admission Settings");
+        admissionsettings.setStyle("-fx-font-size: 13pt;");
         settings.add(admissionsettings, 0, 5, 2, 1);
         Label dateOfAdmission = new Label("Date of Admission {dd/MM/yyyy}");
         Label doctorsFirstName = new Label("Doctor's First Name");

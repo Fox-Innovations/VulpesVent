@@ -11,15 +11,15 @@ import java.util.concurrent.ScheduledExecutorService;
 import javafx.scene.control.Button;
 */
 import javafx.application.Application;
-import javafx.geometry.Insets;
+import javafx.geometry.Insets; 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
-//import javafx.scene.layout.Pane;
+import javafx.stage.Stage; 
 
 
 @SuppressWarnings("ClassCastException")
@@ -29,36 +29,39 @@ public class PrimaryWindow extends Application {
     private GridPane root;
     private BreathGraph breathGraph;
     private InformationTabBar informationTabBar;
-    private LiveDataDisplay liveDataDisplay;
+    private LiveDataDisplay liveDataDisplay; 
 
     
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        informationTabBar = new InformationTabBar(385, 460, 10, 10);
+        informationTabBar = new InformationTabBar(385, 460, 10, 10); 
         breathGraph = new BreathGraph(385, 270, 405, 10);
         liveDataDisplay = new LiveDataDisplay(385, 180, 405, 270);
 
         // int backR = 40;
         // int backG = 40;
-        // int backB = 40;
+        // int backB = 40; 
         Paint backgroundColor = Paint.valueOf("5D5D5D");
 
-        primaryStage.setTitle("Primary Window");
+        primaryStage.setTitle("Vulpas Vent");
 
         //root = new Pane();
         root = new GridPane();
         root.setBackground(new Background(new BackgroundFill(backgroundColor, new CornerRadii(5), new Insets(0))));
         primaryStage.setScene(new Scene(root, 800, 480, backgroundColor));
-        root.add(breathGraph.getBreathGraph(), 1, 0);
+        root.add(breathGraph.getBreathGraph(), 1, 0); 
         root.add(informationTabBar.getInformationTabBar(), 0, 0, 1, 2);
         root.add(liveDataDisplay.getLiveDataDisplay(), 1, 1);
         root.relocate(10, 10);
-        root.setHgap(10);
+        root.setHgap(10); 
         root.setVgap(10);
         //root.getChildren().addAll(breathGraph.getBreathGraph());
         // root.getChildren().addAll(informationTabBar.getInformationTabBar());
         // root.getChildren().addAll(liveDataDisplay.getLiveDataDisplay());
+
+        Image applicationIcon = new Image(getClass().getResourceAsStream("Fox_Innovations_Logo.png")); 
+        primaryStage.getIcons().add(applicationIcon); 
 
         primaryStage.show();
 

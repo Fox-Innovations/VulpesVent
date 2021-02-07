@@ -29,6 +29,8 @@ void setup() {
   Serial.println("2. Reverse direction at default microstep mode.");
   Serial.println("3. Turn at 1/16th microstep mode.");
   Serial.println("4. Step forward and reverse directions.");
+  Serial.println("5. Reverse ar 1/16th microstep mode.");
+  Serial.println("6. 5 Cycles of Test Condition 3");
   Serial.println();
 }
 
@@ -52,6 +54,13 @@ void loop() {
       else if(user_input =='4')
       {
         ForwardBackwardStep();
+      }
+      else if (user_input =='5')
+      {
+        ReverseSmallStepMode();
+      }
+      else if (user_input =='6'){
+        microForwardBackwardStep();
       }
       else
       {
@@ -86,7 +95,7 @@ void ReverseStepDefault()
   Serial.println("Moving in reverse at default step mode.");
   digitalWrite(EN, LOW);
   digitalWrite(dir, HIGH); //Pull direction pin high to move in "reverse"
-  for(x= 0; x<1000; x++)  //Loop the stepping enough times for motion to be visible
+  for(x= 0; x<200; x++)  //Loop the stepping enough times for motion to be visible
   {
     digitalWrite(stp,HIGH); //Trigger one step
     delay(1);
@@ -106,11 +115,36 @@ void SmallStepMode()
   digitalWrite(MS1, HIGH); //Pull MS1,MS2, and MS3 high to set logic to 1/16th microstep resolution
   digitalWrite(MS2, HIGH);
   digitalWrite(MS3, HIGH);
-  for(x= 0; x<1000; x++)  //Loop the forward stepping enough times for motion to be visible
+
+  for (int i = 0; i< 2; i++)
   {
-    digitalWrite(stp,HIGH); //Trigger one step forward
+    for(x= 0; x<1500; x++)  //Loop the forward stepping enough times for motion to be visible
+    {
+      digitalWrite(stp,HIGH); //Trigger one step forward
+      delay(1);
+      digitalWrite(stp,LOW); //Pull step pin low so it can be triggered again
+      delay(1);
+    }
+    digitalWrite(dir, HIGH);
+  }
+  
+
+  Serial.println("Enter new option");
+  Serial.println();
+}
+
+void ReverseSmallStepMode()
+{
+  Serial.println("Reversing at 1/16th microstep mode.");
+  digitalWrite(EN, LOW);
+  digitalWrite(dir, HIGH); //Pull direction pin low to move "backward"
+  digitalWrite(MS1, HIGH); //Pull MS1,MS2, and MS3 high to set logic to 1/16th microstep resolution
+  digitalWrite(MS2, HIGH);
+  digitalWrite(MS3, HIGH);
+  for(x = 0; x< 1200; x++){
+    digitalWrite(stp, HIGH);
     delay(1);
-    digitalWrite(stp,LOW); //Pull step pin low so it can be triggered again
+    digitalWrite(stp, LOW);
     delay(1);
   }
   Serial.println("Enter new option");
@@ -147,11 +181,20 @@ void ForwardBackwardStep()
   Serial.println();
 }
 
+//1/16 Forward Backward stepping function
+void microForwardBackwardStep(){
+  for (int i =0; i< 5; i++)
+  {
+    SmallStepMode();
+  }
+}
+
 void resetBEDPins()
 {
   digitalWrite(stp, LOW);
   digitalWrite(dir, LOW);
   digitalWrite(MS1, LOW);
   digitalWrite(MS2, LOW);
+  digitalWrite(MS3, LOW);
   digitalWrite(EN, HIGH);
 }

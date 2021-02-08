@@ -118,7 +118,7 @@ void SmallStepMode()
 
   for (int i = 0; i< 2; i++)
   {
-    for(x= 0; x<1500; x++)  //Loop the forward stepping enough times for motion to be visible
+    for(x= 0; x<2300; x++)  //Loop the forward stepping enough times for motion to be visible
     {
       digitalWrite(stp,HIGH); //Trigger one step forward
       delay(1);

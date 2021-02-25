@@ -44,7 +44,7 @@ public class PrimaryWindow extends Application {
         // int backB = 40; 
         Paint backgroundColor = Paint.valueOf("5D5D5D");
 
-        primaryStage.setTitle("Vulpas Vent");
+        primaryStage.setTitle("Vulpes Vent");
 
         //root = new Pane();
         root = new GridPane();

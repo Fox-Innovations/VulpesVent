@@ -21,13 +21,12 @@ public class SSCDANN010NG2A3_info {
     }
 
     private static String getJSONPath() {
-        // #TODO add in project carna to this file name, this does not work on other
-        // computers
+        
         return File.separator + System.getProperty("user.dir") + File.separator + "JSON_files" + File.separator
                 + "patient.json";
     }
 
-    //this should be scheduled to repeat to a multiple of the hrz cycle 
+    // this should be scheduled to repeat to a multiple of the hrz cycle
     public static void updateJSON() {
 
         try {
@@ -47,7 +46,7 @@ public class SSCDANN010NG2A3_info {
 
     private static void writeJSON() throws IOException {
 
-        int [][] toWrite = SSCDANN010NG2A3_info.valuesToArray();
+        int[][] toWrite = SSCDANN010NG2A3_info.valuesToArray();
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -58,11 +57,11 @@ public class SSCDANN010NG2A3_info {
 
     private static int[][] readJSON() throws FileNotFoundException {
 
-        GsonBuilder builder = new GsonBuilder(); 
-        Gson gson = builder.create(); 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(SSCDANN010NG2A3_info.getJSONPath()));   
-        int[][] readfrom = gson.fromJson(bufferedReader, int[][].class); 
-        return readfrom; 
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(SSCDANN010NG2A3_info.getJSONPath()));
+        int[][] readfrom = gson.fromJson(bufferedReader, int[][].class);
+        return readfrom;
     }
 
     private static void addCurrentValue() throws IOException {
@@ -75,11 +74,11 @@ public class SSCDANN010NG2A3_info {
         }
     }
 
-    private static int[][] valuesToArray(){
+    private static int[][] valuesToArray() {
 
         int[][] toReturn = new int[values.size()][2];
 
-        for(int i = 0; i < values.size(); i++) {
+        for (int i = 0; i < values.size(); i++) {
 
             toReturn[i][0] = values.get(i)[0];
             toReturn[i][1] = values.get(i)[1];

@@ -15,8 +15,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
   <dependencies>
@@ -74,7 +73,7 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <classpathPrefix>dependency-jars/</classpathPrefix>
+                <classpathPrefix>jar-with-dependencies</classpathPrefix>
                 <mainClass>com.FoxInnovations.Main</mainClass>
               </manifest>
             </archive>
@@ -99,11 +98,16 @@
         </plugin>
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
-            <version>3.0.0</version>
+            <version>3.3.0</version>
             <configuration>
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>com.FoxInnovations.Main</mainClass>
+                </manifest>
+              </archive>
             </configuration>
             <executions>
               <execution>
@@ -130,8 +134,16 @@
               <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
           </configuration>
             </execution>
-        </executions>
-          </plugin>
+            </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.4</version>
+        <configuration>
+            <mainClass>com.FoxInnovations.Main</mainClass>
+        </configuration>
+      </plugin>
       </plugins>
     </pluginManagement>
   </build>
